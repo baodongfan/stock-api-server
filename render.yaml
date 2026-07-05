@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: stock-api
+    env: node
+    region: singapore # 或 oregon, frankfurt
+    plan: free # 免费版
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    healthCheckPath: /health
+    # 免费版会自动休眠，如需保持唤醒可配置 cron
+    # autoDeploy: true # 推送代码自动部署
